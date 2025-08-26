@@ -4,7 +4,16 @@
 .Ruserdata
 
 *.docx
-*.pdf
+*.odt
 *.xlsx
 *.ods
 *.pptx
+
+*/*/*Kahoot*
+*/*/*Kahoot*/*
+*/*/Quiz/
+2025 Fall/zz_*/
+
+# pdfs
+2025 Spring/*/*.pdf
+2025 Spring/*.pdf

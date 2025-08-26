@@ -1,0 +1,34 @@
+---
+title: "2025 Fall BIOL 1209"
+subtitle: "Quiz 01: 9 September" ###
+format:  
+  pdf:
+    # mainfont: "Vollkorn"
+    sansfont: "Petrona"
+    linestretch: 1.5
+    margin-top: 0.5in
+    margin-bottom: 0.5in
+    margin-left: 0.5in
+    margin-right: 0.5in
+    include-in-header:
+      - file: "../include-in-header.tex" # left-justify instead of full-justify
+---
+
+\vspace{-1cm}
+
+**Name:** _______________________  
+**Section:** ______  
+**Time:** 10 min  
+**Max. points:** 10 pt  
+
+\vspace{1cm}
+
+1. First question? **(2 pt)** \linebreak \linebreak \linebreak
+
+1. Circle TRUE or FALSE: **(2 pt)**
+
+    a. Subquestion \linebreak TRUE \hspace{1cm} FALSE
+
+    a. Subquestion \linebreak TRUE \hspace{1cm} FALSE
+    
+1. Third and so on...
