@@ -1,0 +1,48 @@
+---
+title: "BIOL 1209 Icebreaker"
+format:  
+  pdf:
+    mainfont: "Vollkorn"
+    sansfont: "Petrona"
+    linestretch: 1
+    margin-top: 0.5in
+    margin-bottom: 0.5in
+    margin-left: 0.5in
+    margin-right: 0.5in
+    include-in-header:
+      - file: "include-in-header.tex" # left-justify instead of full-justify
+---
+
+\vspace{-1cm}
+
+# Student name
+
+\vspace{1cm}
+
+# Preferred name and pronouns
+
+\vspace{1cm}
+
+# Section no.
+
+\vspace{1cm}
+
+# Major/minor degree
+
+\vspace{1cm}
+
+# Career goal
+
+Tell me more about what field you see yourself working in professionally. Perfectly fine to be unsure :).
+
+\vspace{1cm}
+
+\vspace{1cm}
+
+\vspace{1cm}
+
+# Birds!
+
+Do you have a favourite bird, or a favourite fun fact about birds? Be as specific or vague as you want.
+
+\vspace{1cm}
