@@ -1,0 +1,45 @@
+---
+title: "2025 Fall BIOL 1209"
+subtitle: "Quiz 02" ###
+bibliography: references.bib
+csl: apa.csl
+format:  
+  pdf:
+    # mainfont: "Vollkorn"
+    sansfont: "Petrona"
+    linestretch: 1.5
+    margin-top: 0.5in
+    margin-bottom: 0.5in
+    margin-left: 0.5in
+    margin-right: 0.5in
+    include-in-header:
+      - file: "../include-in-header.tex" # left-justify instead of full-justify
+editor_options: 
+  chunk_output_type: console
+---
+
+\vspace{-1cm}
+
+**Name:** _______________________  
+**Section:** ______  
+**Date:** _______  
+**Time:** 10 min  
+**Max. points:** 10  
+
+\vspace{1cm}
+
+1. In your last lab you used an AMP like PopGen to obtain a graph of fitness vs p(A) for a population. **(2 pt)**  
+a. What was the dependent variable for this experiment?  
+b. What was your null hypothesis for this experiment? \linebreak  \linebreak  \linebreak  \linebreak 
+
+2. What are two values you can use to plot error bars on a graph, and what do the bars represent in each case? **(3 pt)** \linebreak  \linebreak  \linebreak
+
+<!-- SD, SE. Spread of data, (im)precision of sample data, etc. Nothing too statistically advanced. -->
+
+3. Explain two ways in which population size affects evolutionary change (i.e., allele frequencies). **(2 pt)** \linebreak  \linebreak  \linebreak  \linebreak
+
+4. The ability to taste phenylthiocarbamide (PTC) in humans is determined by a gene with two alleles *T* and *t*. Human beings carrying the dominant allele *T* can taste PTC. In a population in which the frequency of this allele *T* is 0.4, what is the frequency of successful tasters, assuming it follows Hardy-Weinberg equilibrium? **(3 pt)**
+
+<!-- ```{r} -->
+<!-- 0.4^2 + 2*0.4*0.6 -->
+<!-- ``` -->

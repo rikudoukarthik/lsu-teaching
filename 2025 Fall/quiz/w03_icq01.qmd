@@ -1,6 +1,8 @@
 ---
 title: "2025 Fall BIOL 1209"
-subtitle: "Quiz 01: 9 September" ###
+subtitle: "Quiz 01" ###
+bibliography: references.bib
+csl: apa.csl
 format:  
   pdf:
     # mainfont: "Vollkorn"
@@ -12,23 +14,51 @@ format:
     margin-right: 0.5in
     include-in-header:
       - file: "../include-in-header.tex" # left-justify instead of full-justify
+editor_options: 
+  chunk_output_type: console
 ---
 
 \vspace{-1cm}
 
 **Name:** _______________________  
 **Section:** ______  
+**Date:** _______  
 **Time:** 10 min  
-**Max. points:** 10 pt  
+**Max. points:** 10  
 
 \vspace{1cm}
 
-1. First question? **(2 pt)** \linebreak \linebreak \linebreak
+1. What in-text citation (in APA format) would you use for this reference? **(2 pt)** \linebreak  
+J. V. Remsen, T. A. Parker, Arboreal Dead-Leaf-Searching Birds of the Neotropics, *The Condor: Ornithological Applications*, Volume 86, Issue 1, 1 February 1984, Pages 36--41, https://doi.org/10.2307/1367341  \linebreak \linebreak
 
-1. Circle TRUE or FALSE: **(2 pt)**
+<!-- ```{r} -->
+<!-- #| echo: false -->
 
-    a. Subquestion \linebreak TRUE \hspace{1cm} FALSE
+<!-- refs <- bibtex::read.bib("references.bib") -->
+<!-- cat(print(refs["remsenparker1984"])) -->
+<!-- ``` -->
 
-    a. Subquestion \linebreak TRUE \hspace{1cm} FALSE
-    
-1. Third and so on...
+2. Circle 3 indications that the below reference is a primary source. **(2 pt)**
+
+![](remsenparker1984.png){height="4in" fig-align="center"}
+
+3. What are two benchtop sterile practices you follow during replica plating? **(2 pt)** \linebreak  \linebreak  \linebreak  \linebreak
+
+4. The table below shows some results of a benchtop bean assay. Fill in the blank cells. **(4 pt)**
+
+```{r}
+#| echo: false
+ 
+library(tibble)
+options(knitr.kable.NA = "")
+
+tribble(
+  ~ "Generation", ~ "# AA ind.", ~ "# Aa ind.", ~ "# aa ind.", 
+  ~ "# A alleles", ~ "# a alleles", ~ "Total # alleles", ~ "p(A)",
+  
+  1, 10, 10, 10, 30, 30, 60, 0.5,
+  2, 5, 5, 10, NA, NA, NA, NA
+) |>
+  knitr::kable(align = "c")
+```
+
