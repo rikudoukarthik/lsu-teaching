@@ -1,0 +1,68 @@
+---
+title: "2025 Fall BIOL 1209"
+subtitle: "Quiz 03" ###
+bibliography: references.bib
+csl: apa.csl
+format:  
+  pdf:
+    fontsize: "10pt"
+    # mainfont: "Vollkorn"
+    sansfont: "Petrona"
+    linestretch: 1.2
+    margin-top: 0.5in
+    margin-bottom: 0.5in
+    margin-left: 0.5in
+    margin-right: 0.5in
+    include-in-header:
+      - file: "../include-in-header.tex" # left-justify instead of full-justify
+editor_options: 
+  chunk_output_type: console
+---
+
+\vspace{-2cm}
+
+**Name:** _______________________ \hspace{2cm} **Section:** ______ \hspace{1.5cm} **Date:** _______  
+**Time:** 10 min \hspace{12cm} **Max. points:** 10  
+
+\vspace{1cm}
+
+1. The Hardy-Weinberg equation is $p^2 + 2pq + q^2 = 1$.  
+Which part of this equation would you use to calculate the percentage of individuals expressing:   
+    a. The dominant phenotype? **(1 pt)**  
+    b. The recessive phenotype? **(1 pt)**
+
+2. What in-text citation (in APA format) would you use for this reference? **(2 pt)** \linebreak   
+Viswanathan, A., Thrikkadeeri, K., Koulgi, P., Deomurari, A., Jha, A., Warudkar, A., ... & Ramachandran, V. (2025). State of India's Birds 2023: A framework to leverage semi‐structured citizen science for bird conservation. *Ecosphere*, 16(7), e70290. https://doi.org/10.1002/ecs2.70290  \linebreak \linebreak
+
+3. Of the 3 conditions listed below, which one indicates a population having heterozygous advantage, and why is it that one? **(2 pt)**
+
+```{r}
+#| echo: false
+ 
+library(tibble)
+# library(kableExtra)
+options(knitr.kable.NA = "")
+
+tribble(
+  ~ "", ~ "Condition 1", ~ "Condition 2", ~ "Condition 3", 
+  "Fitness AA", "1", "0.8", "0.75",
+  "Fitness Aa", "1", "0.8", "0.85",
+  "Fitness aa", "1", "1", "0.8",
+  "Population size", "50000", "2500", "2500",
+  "Starting allele frequency", "0.5", "0.3", "0.5",
+  "No. of populations", "3", "1", "1",
+) |>
+  knitr::kable(align = "c", 
+               format.args = list(scientific = FALSE))
+```
+
+\vspace{1cm}
+
+4. A student wrote the following scientific name in their assignment on an organism of choice. Before submitting the assignment, what two corrections do they need to make, according to binomial nomenclature format? **(2 pt)** \linebreak  
+**echo margarita**
+
+\vspace{1cm}
+
+5. A rat population at Hardy-Weinberg equilibrium has $p(A) = 0.8$.  
+    a. What is the percentage of individuals having homozygous recessive genotype? **(1 pt)** \linebreak  
+    b. If the total population size is 3000 rats, how many have the heterozygous genotype? **(1 pt)** \linebreak

@@ -38,7 +38,7 @@ J. V. Remsen, T. A. Parker, Arboreal Dead-Leaf-Searching Birds of the Neotropics
 <!-- cat(print(refs["remsenparker1984"])) -->
 <!-- ``` -->
 
-2. Circle 3 indications that the below reference is a primary source. **(2 pt)**
+2. Circle 2 indications that the below reference is a primary source. **(2 pt)**
 
 ![](remsenparker1984.png){height="4in" fig-align="center"}
 
