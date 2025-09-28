@@ -1,0 +1,200 @@
+---
+title: "2025 Fall BIOL 1209"
+subtitle: "Mid-term exam" ###
+# bibliography: references.bib
+csl: ../apa.csl
+format:  
+  pdf:
+    fontsize: "10pt"
+    # mainfont: "Vollkorn"
+    sansfont: "Petrona"
+    linestretch: 1.2
+    margin-top: 0.5in
+    margin-bottom: 1in
+    margin-left: 0.5in
+    margin-right: 0.5in
+    include-in-header:
+      - file: "../include-in-header.tex" # left-justify instead of full-justify
+knitr:
+  opts_chunk:
+    echo: false
+    warning: false
+    message: false
+editor_options: 
+  chunk_output_type: console
+---
+
+\vspace{-2cm}
+
+**Name:** _______________________ \hspace{2cm} **Section:** ______ \hspace{1.5cm} **Date:** _______  
+**Time:** 45 min \hspace{12cm} **Max. points:** 50
+
+Please **fill in your name and section number** before starting the exam. **Put away** all phones, smart watches, earbuds, and other electronics. You are allowed to use a calculator, and may use the blank page to perform rough work. 
+
+The Hardy-Weinberg equation is $p^2 + 2pq + q^2 = 1$. The APA reference format for journal articles is: \linebreak  
+Author, A. A., Author, B. B., & Author, C. C. (Year). Title of article. *Title of journal*, *volume number*(issue number), pages. https://doi.org/xx.xxx/yyyy
+
+```{r}
+library(tibble)
+library(kableExtra)
+library(tidyverse)
+
+options(knitr.kable.NA = "")
+```
+
+***
+
+1. A population of hippopotamus has two skin colour phenotypes, white and dark. The white phenotype is coded by the genotype *aa* while the dark phenotype is coded by *AA* and *Aa*. The recessive allele frequency, $p(a) = 0.2$. Calculate the following and show your work:  
+    a. Allele frequency of *A* **(1 pt)** \linebreak  
+    b. Frequency of each genotype in the population **(1.5 pt)** \linebreak \linebreak  
+    c. Proportion of dark-coloured hippopotamus in the population **(1 pt)** \linebreak \linebreak  
+
+2. Ecologists are often concerned by species with small population sizes. The figure below highlights one of the reasons for this concern.  
+    a. What evolutionary processes are associated with smaller population sizes? **(1 pt)** \linebreak  
+    b. What are the independent and dependent variables shown in the figure below? **(2 pt)** \linebreak \linebreak  
+    c. On the right side of the figure, write an appropriate figure caption. **(1.5 pt)**
+    
+<!-- a. Allele loss due to genetic drift. -->
+    
+```{r}
+#| fig-align: left
+#| fig-width: 3
+#| fig-height: 2
+
+tibble(x = c(10, 25, 50, 75, 100, 1000),
+       y = c(1, 0.8, 0.5, 0.3, 0.1, 0)) %>% 
+  mutate(x = factor(x,
+                  levels = c(10, 25, 50, 75, 100, 1000))) %>% 
+  ggplot(aes(x = x, y = y)) +
+  geom_col() +
+  scale_y_continuous(breaks = seq(0, 1, by = 0.2)) +
+  labs(x = "Population size", y = "Fraction of population\nlosing alleles") +
+  theme_classic() +
+  theme(panel.grid.major.y = element_line())
+```
+    
+3. Scientists want to use AMP to investigate the effects of fitness of the dominant allele in a population of Lynx (*Lynx pardinus*).  
+    a. Write an alternative hypothesis and a prediction for this experiment. **(2 pt)** \vspace{2in}
+    b. Fill in the table below with the parameters they would use for two more conditions **(4 pt)**, and draw the expected raw AMP output for one replicate of Condition 1 **(2 pt)**.
+
+```{r}
+tribble(
+  ~ "", ~ "Condition 1", ~ "Condition 2", ~ "Condition 3", 
+  "Population size", "5000", "", "",
+  "Fitness of AA", "1", "", "",
+  "Fitness of Aa", "1", "", "",
+  "Fitness of aa", "0.9", "", "",
+  "Mutation from A to a", "0", "", "",
+  "Mutation from a to A", "0", "", "",
+  "Initial A allele frequency", "0.5", "", "",
+  "No. of generations", "100", "", "",
+) |>
+  knitr::kable(align = "c", 
+               format.args = list(scientific = FALSE)) %>% 
+  kable_styling(latex_options = "striped")
+```
+
+\vspace{2in}
+
+4. Your colleague ran the AMP conditions you specified in Q3 using three replicates, and collected the AMP data in the table below. Use this data to fill in the provided figure (next page) with a bar graph having error bars and a figure caption. Make sure to label the axes and specify the actual conditions. You can use information from Q3. **(7 pt)**  
+
+```{r}
+#| fig-width: 6
+#| fig-height: 4
+
+tribble(
+  ~ "", ~ "Average (n = 3)", ~ "S.D.", 
+  "Condition 1", "0.8", "0.1",
+  "Condition 2", "0.65", "0.2",
+  "Condition 3", "0.5", "0.1",
+) |>
+  knitr::kable(align = "c")
+
+ggplot(tibble(x = "", 
+              y = c(0, 1)),
+       aes(x = x, y = y)) +
+  scale_y_continuous(breaks = seq(0, 1, by = 0.1)) +
+  labs(x = "", y = "") +
+  theme_classic() +
+  theme(panel.grid.major.y = element_line(),
+        axis.ticks.x = element_blank())
+```
+
+\vspace{1.5in}
+
+5. Two journal articles are shown below (A and B).  
+    a. Which of the two articles is a primary source? ____ **(0.5 pt)**
+    b. Circle one indication that it is a primary source. **(0.5 pt)**
+    c. Provide in-text citations for both articles. **(2 pt)**
+
+(A) ![](drake2025.png){height="2in" fig-align="left"}
+
+(B) ![](medinaetal2025.png){height="2in" fig-align="left"}
+
+6. List all corrections required for the following references to match the APA format: **(4 pt)**  
+    a. Clarke, C. A., Mani, G. S., & Wynne, G. *Evolution in reverse: clean air and the peppered moth*. *Biological Journal of the Linnean Society*, 26(2), 189–199. (1985) https://doi.org/10.1111/j.1095-8312.1985.tb01555.x \linebreak \linebreak \linebreak  
+    b. Nicola Petty, Lori Nouri, Ben Zakour, Mark Stanton-Cook, and Sara Beatson, (2014). Global dissemination of a multidrug resistant Escherichia coli clone. 111(15), 5694-5699. https://10.1073/pnas.1322678111. *PNAS*. \linebreak \linebreak \linebreak
+    
+<!-- a. Title unitalicise, move year. b. Author initials, move journal name. -->
+
+7. Below is the output from an AMP modelling replicate.  
+
+![**Blue wing allele frequency in butterfly over 200 generations**. Modelling of two alleles, blue wings (A) and silver wings (a) in a population of *Lycaeides melissa*.](amp1.png){height="2in" fig-align="center"}
+
+Using this figure, answer the following questions.  
+
+a. Which phenotype(s) have higher fitness? **(1 pt)** \linebreak \linebreak  
+b. Which genotype(s) have higher fitness? **(1 pt)**  
+
+\vspace{1in}
+
+8. In the replica-plating experiments, you worked with *Escherichia coli* and explored the phenotype of antibiotic resistance.   
+    a. What are the 2 environmental conditions you tested? **(2 pt)** \linebreak \linebreak  
+    b. Briefly explain (1--2 sentences) what happens to allele frequencies as evolution progresses in the plates. **(2 pt)** \linebreak \linebreak \linebreak \linebreak  
+
+9. The current environment of pepper moths (*Biston betularia*) has mostly light grey trees and therefore favours white-mottled moths. In a benchtop bean assay, the allele conferring white-mottled colouring (white bean) is recessive and has a fitness of 1. The black-mottled allele (black bean) has a fitness of 0.5. 
+
+![](beans.png){height="2.5in" fig-align="center"}
+
+Given the above trays, answer the following:  
+
+a. How many individuals (moths) from the *Aa* tray do you place in the non-reproducing tray? ____ **(1 pt)**  
+b. How many alleles from the *aa* tray do you place in the gene pool tray? ____ **(1 pt)**  
+c. How many black beans from the *Aa* tray do you place in the gene pool tray? ____ **(1 pt)**  
+
+*You may use the space below for calculations if needed.*
+
+\vspace{3in}
+
+10. Using the below taxonomy of 4 organisms, construct a rooted phylogenetic tree. You can use the short codes (column headers) for tip labels. **(8 pt)**
+
+```{r}
+tibble(
+  taxon = c("Domain", "Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"),
+  El = c("Eukaryota", "Animalia", "Chordata", "Mammalia", "Carnivora", 
+         "Mustelidae", "*Enhydra*", "*E. lutris*"),
+  Lc = c("Eukaryota", "Animalia", "Chordata", "Mammalia", "Carnivora", 
+         "Mustelidae", "*Lontra*", "*L. canadensis*"),
+  Mep = c("Eukaryota", "Animalia", "Chordata", "Mammalia", "Carnivora", 
+         "Mephitidae", "*Mephitis*", "*M. mephitis*"),
+  Mac = c("Eukaryota", "Animalia", "Chordata", "Mammalia", "Carnivora", 
+         "Mephitidae", "*Mephitis*", "*M. macroura*")
+) |>
+  magrittr::set_colnames(c("", "El", "Lc", "Mep", "Mac")) %>% 
+  knitr::kable(align = "c", 
+               # below arguments don't work
+               booktabs = TRUE, vline = "|")
+```
+
+\vspace{8in}
+
+11. Two phylogenetic trees are given below.
+
+![](phytrees.png){height="2.5in" fig-align="center"}
+
+Using this information:  
+
+a. Assuming crocodiles are closely related to ray-finned fish, which tree better represents this evolutionary relationship? **(1 pt)** \linebreak \linebreak  
+    <!-- Second -->
+b. How would you change the second tree to be equivalent to the first tree? **(2 pt)** 
+    <!-- Switch Ray-finned fish and sharks. -->
