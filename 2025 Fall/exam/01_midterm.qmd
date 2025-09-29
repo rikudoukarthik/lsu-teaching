@@ -49,10 +49,10 @@ options(knitr.kable.NA = "")
     b. Frequency of each genotype in the population **(1.5 pt)** \linebreak \linebreak  
     c. Proportion of dark-coloured hippopotamus in the population **(1 pt)** \linebreak \linebreak  
 
-2. Ecologists are often concerned by species with small population sizes. The figure below highlights one of the reasons for this concern.  
-    a. What evolutionary processes are associated with smaller population sizes? **(1 pt)** \linebreak  
-    b. What are the independent and dependent variables shown in the figure below? **(2 pt)** \linebreak \linebreak  
-    c. On the right side of the figure, write an appropriate figure caption. **(1.5 pt)**
+2. Ecologists are often concerned by species with small population sizes. The figure below highlights one of the reasons for this concern. Using this figure, answer:  
+    a. Name one evolutionary process associated with smaller population sizes. **(1 pt)** \linebreak  
+    b. What are the independent and dependent variables here? **(2 pt)** \linebreak \linebreak  
+    c. Assuming that the bars represent average values from 5 replicates, list 3 things missing from this figure. **(1.5 pt)**
     
 <!-- a. Allele loss due to genetic drift. -->
     
@@ -194,7 +194,7 @@ tibble(
 
 Using this information:  
 
-a. Assuming crocodiles are closely related to ray-finned fish, which tree better represents this evolutionary relationship? **(1 pt)** \linebreak \linebreak  
+a. Which tree represents a closer evolutionary relationship between crocodiles and ray-finned fishes? **(1 pt)** \linebreak \linebreak  
     <!-- Second -->
 b. How would you change the second tree to be equivalent to the first tree? **(2 pt)** 
     <!-- Switch Ray-finned fish and sharks. -->
