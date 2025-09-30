@@ -116,7 +116,7 @@ ggplot(tibble(x = "",
   scale_y_continuous(breaks = seq(0, 1, by = 0.1)) +
   labs(x = "", y = "") +
   theme_classic() +
-  theme(panel.grid.major.y = element_line(),
+  theme(panel.grid.major.y = element_line(colour = "grey80"),
         axis.ticks.x = element_blank())
 ```
 
@@ -139,7 +139,7 @@ ggplot(tibble(x = "",
 
 7. Below is the output from an AMP modelling replicate.  
 
-![**Blue wing allele frequency in butterfly over 200 generations**. Modelling of two alleles, blue wings (A) and silver wings (a) in a population of *Lycaeides melissa*.](amp1.png){height="2in" fig-align="center"}
+![**Blue wing allele frequency in butterfly over 50 generations**. Modelling of two alleles, blue wings (A) and silver wings (a) in a population of *Lycaeides melissa*.](amp1.png){height="2in" fig-align="center"}
 
 Using this figure, answer the following questions.  
 
@@ -166,7 +166,7 @@ c. How many black beans from the *Aa* tray do you place in the gene pool tray? _
 
 \vspace{3in}
 
-10. Using the below taxonomy of 4 organisms, construct a rooted phylogenetic tree. You can use the short codes (column headers) for tip labels. **(8 pt)**
+10. Using the below taxonomy of 4 organisms, construct a rooted phylogenetic tree. Use the taxonomic levels for branch labels, and the short codes (column headers) for tip labels. **(8 pt)**
 
 ```{r}
 tibble(
