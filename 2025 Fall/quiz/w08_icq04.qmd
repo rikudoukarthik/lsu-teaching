@@ -1,0 +1,71 @@
+---
+title: "2025 Fall BIOL 1209"
+subtitle: "Quiz 04" ###
+bibliography: references.bib
+csl: apa.csl
+format:  
+  pdf:
+    fontsize: "10pt"
+    # mainfont: "Vollkorn"
+    sansfont: "Petrona"
+    linestretch: 1.2
+    margin-top: 0.5in
+    margin-bottom: 0.5in
+    margin-left: 0.5in
+    margin-right: 0.5in
+    include-in-header:
+      - file: "../include-in-header.tex" # left-justify instead of full-justify
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| echo: false
+
+library(tibble)
+options(knitr.kable.NA = "")
+```
+
+\vspace{-2cm}
+
+**Name:** _______________________ \hspace{2cm} **Section:** ______ \hspace{1.5cm} **Date:** _______  
+**Time:** 10 min \hspace{12cm} **Max. points:** 10  
+
+\vspace{1cm}
+
+1. Distinguish between homologous and analogous traits. **(2 pt)**
+
+\vspace{3.5cm}
+
+2. Sister taxa are those that are most closely related to each other. Using the phylogenetic tree below, circle any one pair of sister taxa. **(2 pt)**
+
+![](phy_trees.png){height="3in" fig-align="center"}
+
+3. Pectoral fins of sharks and killer whales are ____________ traits. **(1 pt)**
+
+![](pec_fins.png){height="2in" fig-align="center"}
+
+4. Label the following factors as either *biotic* or *abiotic*: **(2 pt)**  
+    a. Temperature ____________
+    a. Dissolved oxygen ____________
+    a. Sunlight ____________
+    a. Parasites ____________
+
+5. What is one difference between autotrophs and heterotrophs? Also name one example organism for each. **(2 pt)**
+
+\vspace{4cm}
+    
+6. Which lake has the clearest water according to the following data? ____________ **(1 pt)**
+
+```{r}
+#| echo: false
+
+tribble(
+  ~ "Lake name", ~ "Secchi disk reading (average \u00B1 SD) (cm)", 
+  "Crest Lake", "200 \u00B1 10",
+  "City Park Lake", "230 \u00B1 10",
+  "University Lake", "40 \u00B1 5"
+) |>
+  knitr::kable(align = "c")
+```
+
