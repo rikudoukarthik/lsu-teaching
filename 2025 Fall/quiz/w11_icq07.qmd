@@ -1,0 +1,47 @@
+---
+title: "2025 Fall BIOL 1209"
+subtitle: "Quiz 07" ###
+bibliography: references.bib
+csl: apa.csl
+format:  
+  pdf:
+    fontsize: "10pt"
+    # mainfont: "Vollkorn"
+    sansfont: "Petrona"
+    linestretch: 1.2
+    margin-top: 0.5in
+    margin-bottom: 0.5in
+    margin-left: 0.5in
+    margin-right: 0.5in
+    include-in-header:
+      - file: "../include-in-header.tex" # left-justify instead of full-justify
+editor_options: 
+  chunk_output_type: console
+---
+
+\vspace{-2cm}
+
+**Name:** _______________________ \hspace{2cm} **Section:** ______ \hspace{1.5cm} **Date:** _______  
+**Time:** 10 min \hspace{12cm} **Max. points:** 10  
+
+\vspace{1cm}
+
+1. Two ways protists (Protista) can be organised are by their modes of nutrition and locomotion. Name one mode of nutrition and one mode of locomotion found in this group. **(2 pt)** \vspace{1cm}  
+ 
+2. What taxonomic level (Domain - Kingdom - Phylum/Group) do the following names belong to? **(3 pt)**  
+    a. Archaea ____________  
+    b. Protista ____________  
+    c. Diatoms ____________  
+    d. Eukarya ____________  
+    e. Ciliates ____________  
+    f. Radiolarians ____________  
+
+3. What do animals and fungi have in common? (Hint: recall the systematic tree for Kingdoms.) **(1 pt)** \linebreak \linebreak  
+
+4. A student is using a 40x objective lens in a microscope with a 10x eyepiece. Answer:  
+    a. What is the total magnification of the microscope? ________ **(1 pt)**  
+    a. The study protocol requires a total magnification of 100x. Which objective lens should the student switch to? ________ **(1 pt)**  
+
+5. Fill in the blank boxes in Figure 9-2: **(2 pt)**
+
+![](domains_of_life.png){height="3in" fig-align="center"}
