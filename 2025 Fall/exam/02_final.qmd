@@ -1,0 +1,377 @@
+---
+title: "2025 Fall BIOL 1209"
+subtitle: "Final Exam" ###
+# bibliography: references.bib
+csl: ../apa.csl
+format:  
+  pdf:
+    fontsize: "10pt"
+    # mainfont: "Vollkorn"
+    sansfont: "Petrona"
+    linestretch: 1.2
+    margin-top: 0.5in
+    margin-bottom: 1in
+    margin-left: 0.5in
+    margin-right: 0.5in
+    include-in-header:
+      - file: "../include-in-header.tex" # left-justify instead of full-justify
+number-sections: false
+knitr:
+  opts_chunk:
+    echo: false
+    warning: false
+    message: false
+editor_options: 
+  chunk_output_type: console
+---
+
+\vspace{-1.5cm}
+
+**Name:** _______________________ \hspace{8cm} **Section:** ______  
+
+**Max. time:** 1 h 30 m \hspace{5cm} **Date:** 2 Dec 2025 \hspace{4cm} **Max. points:** 100
+
+\vspace{2cm}
+
+Please **fill in your name and section number** above, before starting the exam. **DO NOT open this exam sheet** until instructed to collectively as a class, so everyone is given the same amount of time to complete the work. In the meantime, please read the following instructions carefully:
+
+- **Put away** all phones, smart watches, earbuds, and other electronics. 
+- You are allowed to use a non-programmable calculator. 
+- Please raise your hand if you have any questions. Do not discuss with others. 
+- **Write legibly!** If not using a pen, double-check that pencil writing is clear and readable.
+- Pace yourself well, and make sure to **attempt ALL questions**.
+
+***
+
+This Final Exam consists of two parts: Theory (50 pt) and Practical (50 pt).
+
+The Hardy-Weinberg equation is $p^2 + 2pq + q^2 = 1$. 
+
+The APA reference format for journal articles is: \linebreak  
+Author, A. A., Author, B. B., & Author, C. C. (Year). Title of article. *Title of journal*, *volume number*(issue number), pages. https://doi.org/xx.xxx/yyyy
+
+***
+
+\begin{center}
+\textbf{GOOD LUCK!}
+\end{center}
+
+```{r}
+library(tibble)
+library(kableExtra)
+library(tidyverse)
+library(patchwork)
+
+options(knitr.kable.NA = "")
+```
+
+{{< pagebreak >}}
+
+# PART 1: Theory {.unnumbered}
+
+## Topic 1: Evolution (5 pt)
+
+1. Which part of the Hardy-Weinberg equation would you use to calculate the percentage of individuals expressing:   
+    a. The heterozygous genotype? ____________ **(0.5 pt)**  
+    b. The recessive phenotype? ____________ **(0.5 pt)**
+
+2. The current environment of pepper moths (*Biston betularia*) has mostly dark-coloured trees and therefore favours black-mottled moths. In a benchtop bean assay, the allele conferring white-mottled colouring (white bean) is recessive and has a fitness of 0.5. The black-mottled allele (black bean) has a fitness of 1. 
+
+![](beans.png){height="2.5in" fig-align="center"}
+
+Given the above trays, answer the following:  
+
+a. How many individuals (moths) from the *Aa* tray do you place in the non-reproducing tray? ____ **(1 pt)** <!-- 0 -->  
+b. How many beans from the *aa* tray do you place in the gene pool tray? ____ **(1 pt)** <!-- 8 --> 
+
+*You may use the space below for calculations if needed.*
+
+\vspace{3in}
+
+3. @fig-amp is the output from an AMP modelling replicate. Use @fig-amp to answer the following questions.  
+    a. Which phenotype(s) have higher fitness? ________________ **(0.5 pt)**  
+    a. Which genotype(s) have higher fitness? ________________ **(0.5 pt)**  
+    a. What are the dominant and recessive allele frequencies (i.e., $p(A)$ and $p(a)$) at generation 100? **(1 pt)** \linebreak \linebreak  
+
+```{r}
+#| label: fig-amp
+#| fig-cap: "**Large beak allele frequency in Darwin's finch, over 100 generations.** Modelling of two alleles, large beaks (A) and small beaks (a) in a population of *Geospiza magnirostris*."
+#| fig-align: center
+#| fig-width: 4
+#| fig-height: 2.5
+
+growth <- seq(0.5, 0.9, length.out = 61)
+
+p1 <- seq(0.5, 0.9, length.out = 61)
+p1_new <- purrr::map_dbl(p1, ~ {
+  .x + sample(seq(0.001, 0.02, by = 0.001), 1)*sample(c(1, -1), 1)
+})
+p2 <- rep(0.9, 40)
+p2_new <- purrr::map_dbl(p2, ~ {
+  .x + sample(seq(0.001, 0.01, by = 0.001), 1)*sample(c(1, -1), 1)
+})
+
+tibble(Generations = 0:100,
+       p = c(p1_new, p2_new)) %>% 
+  magrittr::set_colnames(c("Generations", "p(A)")) %>% 
+  ggplot(aes(x = Generations, y = `p(A)`)) +
+  geom_line() +
+  scale_y_continuous(limits = c(0, 1),
+                     breaks = seq(0, 1, by = 0.1)) +
+  coord_cartesian(xlim = c(0, 105), expand = FALSE) +
+  theme_classic() +
+  theme(panel.grid.major.y = element_line(colour = "grey80"))
+```
+
+## Topic 2: Techniques (10 pt)
+
+4. Your lab is interested in studying the growth of southern live oak (*Quercus virginiana*) seedlings. Your labmates designed an experiment, to test the alternative hypothesis that changes in phosphorous availability will affect average biomass gained (g) over four weeks. They collected the following data (@tbl-seedlings) and produced a graph (@fig-seedlings). 
+
+```{r}
+#| label: tbl-seedlings
+#| tbl-cap: "Data from southern live oak seedling growth experiment under three different phosphorous availability treatments (Low, Medium, and High)."
+
+data_seedlings <- tibble(
+  p = c("Low", "Medium", "High"),
+  n = 10,
+  b_mean = c(35, 20, 10),
+  b_sd = c(10, 1, 5)
+) %>% 
+  mutate(p = factor(p, levels = c("Low", "Medium", "High"))) 
+
+data_seedlings |>
+  magrittr::set_colnames(c("Phosphorous availability", 
+                           "No. of replicates",
+                           "Average biomass gained (g)",
+                           "Standard deviation")) %>% 
+  knitr::kable(align = "c", 
+               format.args = list(scientific = FALSE)) %>% 
+  kable_styling(latex_options = "striped")
+
+```
+
+```{r}
+#| label: fig-seedlings
+#| fig-cap: "Growth of *Quercus virginiana* seedlings under three different phosphorous availability treatments (Low, Medium, and High). Growth was measured as average biomass gained (g) over four weeks. Bars represent means of ten replicate seedlings per treatment. Error bars indicate standard deviation."
+#| fig-align: center
+#| fig-width: 3
+#| fig-height: 3
+
+data_seedlings %>% 
+  ggplot(aes(x = p, y = b_mean)) +
+  geom_col(fill = "grey75") +
+  scale_y_continuous(breaks = seq(0, 50, by = 10), 
+                     limits = c(0, 50), 
+                     expand = c(0, 0)) +
+  labs(x = "Phosphorous availability", y = "Average biomass gained (g)") +
+  theme_classic() +
+  theme(panel.grid.major.y = element_line(colour = "grey80"),
+        panel.grid.minor.y = element_line(colour = "grey80", linetype = "dashed"))
+```
+
+As a lab member, you have been assigned the following tasks:
+
+a. @fig-seedlings is missing error bars. Use @tbl-seedlings to complete the graph, by drawing the missing error bars. **(3 pt)**  
+a. Based on @fig-seedlings that you just completed, decide whether to accept or reject the alternative hypothesis, and explain your reasoning. **(2 pt)**
+
+\vspace{2cm}
+
+5. Below is a screenshot of a recently published paper. Answer the following questions:  
+    a. Is this a primary or secondary source? ____________ **(1 pt)**  
+    a. What is name of the journal in which this paper was published? ____________ **(1 pt)** <!-- Ecology or Ecology | Ecological Society of America -->  
+    a. How would you in-text cite this paper in your assignment? (Use APA format.) **(2 pt)** \linebreak \linebreak  
+    a. Which section of the paper do you think the following quoted text is from? Circle the correct option: Introduction | Methods | Results | Discussion **(1 pt)**  
+    "Our expectation that marked variation in assemblages among fire treatments after 18 years was not met. [...] We predicted that variation in lizard assemblages would be better explained by woody cover than by fire treatment, and this was the case for both species richness and composition."  
+
+![](rachmansahetal2025.png){height="3.15in" fig-align="center"}
+
+## Topic 3: Systematics (10 pt)
+
+6. Use the systematic tree below to answer the following questions:  
+    a. Name 3 traits belonging to all robins. **(1.5 pt)** \linebreak \linebreak  
+    a. Name 3 traits shared between robins and lizards. **(1.5 pt)** \linebreak \linebreak  
+    a. The Gulf Coast Toad, *Incilius valliceps*, is a species belonging to the "Frog" group in the tree below. Name one of its traits. **(1 pt)** \linebreak \linebreak  
+    a. Identify one pair of sister taxa according to this tree. **(1 pt)** \linebreak \linebreak  
+    a. Which organism, among A--G, is the most recent common ancestor of salmon and gorilla? ____ **(1 pt)**
+    
+![](tree_traits.png){height="3in" fig-align="center"}
+
+7. Are the following trees equivalent? If not, circle the one(s) that are different. **(2 pt)**
+
+<!-- No, first is different -->
+
+![](tree_equiv.png){height="2.25in" fig-align="center"} 
+
+8. State true or false:  
+    a. Analogous traits perform the same function but are structurally different. ________ **(1 pt)** <!-- true -->  
+    a. Bird wings and bat wings are homologous. ________ **(1 pt)** <!-- false --> 
+
+## Topic 4: Ecology (15 pt)
+
+9. Which of the following populations (A or B) has reached carrying capacity? Is that growth curve exponential or logistic? **(2 pt)** \linebreak ________________________________  
+
+```{r}
+#| fig-align: center
+#| fig-width: 4
+#| fig-height: 2
+
+((ggplot(data.frame(x = 0), aes(x)) +
+   stat_function(fun = exp,
+                 col = "royalblue") +
+   xlim(0, 5) +
+   labs(x = "Time", y = "Population size")) |
+  (ggplot(data.frame(x = 0), aes(x)) +
+     stat_function(fun = function(x) 1 / (1 + exp(-x)),
+                   col = "royalblue") +
+     xlim(-10, 10) +
+     labs(x = "Time", y = "Population size"))) &
+  theme_classic() +
+  theme(axis.ticks = element_blank(),
+        axis.text = element_blank()) &
+  plot_annotation(tag_levels = "A")
+```
+
+10. @fig-lake below shows the data from a lake field study. Using this, answer the following questions:  
+
+```{r}
+#| label: fig-lake
+#| fig-cap: "**Change in chlorophyll concentration with different temperatures.** Results of lake field study testing chlorophyll concentration versus temperature. Points represent raw data, and the line and shaded region represent linear trend."
+#| fig-align: center
+#| fig-width: 3
+#| fig-height: 2
+
+set.seed(1)
+df <- data.frame(temp = runif(60, 12, 30)) %>% 
+  mutate(chl = 5 + 0.8 * temp + rnorm(60, sd = 5))
+m <- lm(chl ~ temp, df)
+r2 <- summary(m)$r.squared
+
+df %>% 
+  ggplot(aes(x = temp, y = chl)) +
+  geom_point(color = "blue", alpha = 0.6) +
+  # regression line with CI
+  geom_smooth(method = "lm", se = TRUE, color = "red", fill = "red", alpha = 0.2) +
+  # R² annotation
+  annotate("text",
+           x = min(df$temp) + 2,
+           y = max(df$chl) - 2,
+           label = paste0("R² = ", round(r2, 2)),
+           color = "red") +
+  labs(title = paste("Chlorophyll vs Temperature (R² ~", round(r2, 1), ")"),
+       x = "Temperature (°C)",
+       y = "Chlorophyll concentration") +
+  theme_classic(base_size = 8)
+```
+
+a. Name the independent and dependent variables in the study, and mention for each whether it is an abiotic or a biotic factor. **(4 pt)** \vspace{2cm}  
+a. What does the amount of chlorophyll serve as a proxy for in this study? In other words, what does this value tell you about the lake water? **(2 pt)** \vspace{2cm}  
+a. What kind of organism(s) are being monitored in this study? Circle one: autotrophs | heterotrophs **(1 pt)**  
+a. Name the role of these organism(s) in the food web of the lake. ________________ **(1 pt)**  
+a. Is the following statement an alternative hypothesis or a prediction? ________________ **(1 pt)** \linebreak "The temperature of the lake water will have an effect on its chlorophyll concentration, and this will be tested using R^2^ value."  
+a. Do you accept or reject the alternative hypothesis? Explain your reasoning. **(2 pt)** \linebreak \linebreak \linebreak  
+a. Is temperature a limiting factor in this lake system? ______ **(1 pt)**  
+a. Would you say @fig-lake is showing a logistic, exponential, or linear **growth curve**? **(1 pt)** \linebreak Circle one: logistic | exponential | linear | none
+
+## Topic 5: Organism diversity (10 pt)
+
+11. Use the below phylogenetic tree to answer the following questions.
+
+![](kingdoms.png){height="3in" fig-align="center"}
+
+a. What is this tree showing on the tip labels? **(1 pt)** \linebreak Circle one: domains | kingdoms | phyla/groups  
+a. Complete the tree by filling in the blanks for the corresponding letters. **(6 pt)**  
+    A. ________________  
+    B. ________________  
+    C. ________________  
+    D. ________________  
+    E. ________________  
+    F. ________________  
+a. List 3 traits of Protista, based on the tree. **(3 pt)** \linebreak \linebreak
+
+{{< pagebreak >}}
+
+# PART 2: Practical {.unnumbered}
+
+## Station 1
+
+<!-- Diatom -->
+
+1. Identify the organism(s) from the given slide, and answer the following questions. (Fill blanks or circle correct option, as appropriate.) **(1 pt each, 6 pt total)**  
+    a. Domain: ________________ <!-- Eukarya -->  
+    a. Kingdom: ________________ <!-- Protista -->  
+    a. Phylum/Group: ________________ <!-- Diatoms/Stramenophiles -->  
+    a. Slide preparation: Live | Fixed | Fixed + stained <!-- Fixed -->  
+    a. Shell: None | Calcite | Silica <!-- Silica -->  
+    a. Cellular makeup: Unicellular/Colonial | Multicellular <!-- Unicellular/Colonial -->  
+
+## Station 2
+
+<!-- Radiolarian -->
+
+2. Identify the organism(s) from the given slide, and answer the following questions. (Fill blanks or circle correct option, as appropriate.) **(1 pt each, 6 pt total)**  
+    a. Domain: ________________ <!-- Eukarya -->  
+    a. Kingdom: ________________ <!-- Protista -->  
+    a. Phylum/Group: ________________ <!-- Radiolaria -->  
+    a. Slide preparation: Live | Fixed | Fixed + stained <!-- Fixed -->  
+    a. Shell: None | Calcite | Silica <!-- Silica -->  
+    a. Cellular makeup: Unicellular/Colonial | Multicellular <!-- Unicellular/Colonial -->  
+    
+## Station 3
+
+<!-- Hydra -->
+
+3. Identify the organism(s) from the given slide, and answer the following questions. (Fill blanks or circle correct option, as appropriate.) **(1 pt each, 6 pt total)**  
+    a. Domain: ________________ <!-- Eukarya -->  
+    a. Kingdom: ________________ <!-- Animalia -->  
+    a. Phylum/Group: ________________ <!-- Cnidaria -->  
+    a. Slide preparation: Live | Fixed | Fixed + stained <!-- Fixed -->  
+    a. Symmetry: Asymmetric | Radial | Bilateral <!-- Asymmetric -->  
+    a. Trophic level: Producer | Consumer | Decomposer <!-- Consumer -->  
+
+## Station 4
+
+<!-- Sponge -->
+
+4. Identify the organism(s), and answer the following questions. (Fill blanks or circle correct option, as appropriate.) **(1 pt each, 7 pt total)**  
+    a. Domain: ________________ <!-- Eukarya -->  
+    a. Kingdom: ________________ <!-- Animalia -->  
+    a. Phylum/Group: ________________ <!-- Porifera -->  
+    a. Symmetry: Asymmetric | Radial | Bilateral <!-- Asymmetric -->  
+    a. Cellular makeup: Unicellular/Colonial | Multicellular <!-- Multicellular -->  
+    a. Trophic level: Producer | Consumer | Decomposer <!-- Consumer -->  
+    a. Mode of nutrition: Autotroph | Ingestive heterotroph | Absorptive heterotroph <!-- Ingestive heterotroph -->  
+
+## Station 5
+
+<!-- Paramecium -->
+
+5. Identify the organism(s) from the given slide, and answer the following questions. (Fill blanks or circle correct option, as appropriate.) **(1 pt each, 6 pt total)**  
+    a. Domain: ________________ <!-- Eukarya -->  
+    a. Kingdom: ________________ <!-- Protista -->  
+    a. Phylum/Group: ________________ <!-- Ciliates -->  
+    a. Slide preparation: Live | Fixed | Fixed + stained <!-- Fixed -->  
+    a. Shell: None | Calcite | Silica <!-- None -->  
+    a. Cellular makeup: Unicellular/Colonial | Multicellular <!-- Unicellular/Colonial -->  
+
+## Station 6
+
+6. Suppose you are observing an unknown slide using the 10x objective lens on a microscope that has a 10x eyepiece. **(1 pt each, 5 pt total)**  
+    a. What is the total magnification? ________ <!-- 100x -->  
+    a. Next, you want to examine the given slide (see slide in front of you). What do you call this type of slide? ________________ <!-- Depression slide -->  
+    a. In order to observe a specimen in this type of slide, which objective lens should you switch to? ________ <!-- 4x -->  
+    a. What is the new total magnification? ________ <!-- 40x -->  
+    a. In order to get the specimen in focus, which adjustment knob should you use? ________ <!-- Coarse -->  
+
+## Station 7
+
+7. Look at the given equipment, and name them. **(4 pt)**  
+    a. ________________ <!-- Secchi disc -->  
+    a. ________________ <!-- Parafilm -->  
+    a. ________________ <!-- Thermometer -->  
+    a. ________________ <!-- pH probe -->  
+
+## Station 8
+
+8. Five different species are shown in the given cards, along with a list their traits. Use this information to draw a phylogenetic tree for these species. Remember to label the branches using the traits, and the tips using the species names. **(10 pt)**
+
+\vspace{2in}
