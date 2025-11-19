@@ -1,0 +1,76 @@
+---
+title: "2025 Fall BIOL 1209"
+subtitle: "Quiz 08" ###
+bibliography: references.bib
+csl: apa.csl
+format:  
+  pdf:
+    fontsize: "10pt"
+    # mainfont: "Vollkorn"
+    sansfont: "Petrona"
+    linestretch: 1.2
+    margin-top: 0.5in
+    margin-bottom: 0.5in
+    margin-left: 0.5in
+    margin-right: 0.5in
+    include-in-header:
+      - file: "../include-in-header.tex" # left-justify instead of full-justify
+editor_options: 
+  chunk_output_type: console
+---
+
+\vspace{-2cm}
+
+**Name:** _______________________ \hspace{2cm} **Section:** ______ \hspace{1.5cm} **Date:** _______  
+**Time:** 10 min \hspace{12cm} **Max. points:** 10  
+
+\vspace{1cm}
+
+1. Use the below phylogenetic tree to answer the following questions.  
+    a. What is this tree showing on the tip labels? Circle one: domains | kingdoms | phyla/groups **(1 pt)**  
+    a. List 3 traits of Fungi based on the tree. **(3 pt)** \linebreak \linebreak
+
+![](tree_kingdoms.png){height="2in" fig-align="center"}
+
+2. @fig-lake below shows the data from a lake field study. Using this, answer the following questions:  
+
+```{r}
+#| label: fig-lake
+#| fig-cap: "**Change in chlorophyll concentration with different pH values.** Results of lake field study testing chlorophyll concentration versus pH. Points represent raw data, and the line and shaded region represent linear trend."
+#| fig-align: center
+#| fig-width: 3.5
+#| fig-height: 2.5
+#| message: false
+#| warning: false
+#| echo: false
+
+library(tidyverse)
+
+set.seed(1)
+df <- data.frame(pH = runif(60, 2, 13)) %>% 
+  mutate(chl = 5 + 0.8 * pH + rnorm(60, sd = 5))
+m <- lm(chl ~ pH, df)
+r2 <- summary(m)$r.squared
+
+df %>% 
+  ggplot(aes(x = pH, y = chl)) +
+  geom_point(color = "blue", alpha = 0.6) +
+  # regression line with CI
+  geom_smooth(method = "lm", se = TRUE, color = "red", fill = "red", alpha = 0.2) +
+  # R² annotation
+  annotate("text",
+           x = min(df$pH) + 2,
+           y = max(df$chl) - 2,
+           label = paste0("R² = ", round(r2, 2)),
+           color = "red") +
+  labs(title = paste("Chlorophyll vs pH (R² ~", round(r2, 1), ")"),
+       x = "pH",
+       y = "Chlorophyll concentration") +
+  theme_classic(base_size = 8)
+```
+
+a. Name the independent and dependent variables in the study, and mention for each whether it is an abiotic or a biotic factor. **(2 pt)** \vspace{2cm}  
+a. What does the amount of chlorophyll serve as a proxy for in this study? In other words, what does this value tell you about the lake water? **(1 pt)** \vspace{2cm}  
+a. What kind of organism(s) are being monitored in this study? Circle one: autotrophs | heterotrophs **(1 pt)**  
+a. Name the role of these organism(s) in the food web of the lake (hint: trophic level). ________________ **(1 pt)**  
+a. Would you say @fig-lake is showing a logistic, exponential, or linear **growth curve**? **(1 pt)** \linebreak Circle one: logistic | exponential | linear | none
