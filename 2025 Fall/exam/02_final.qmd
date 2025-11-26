@@ -196,7 +196,7 @@ a. Based on @fig-seedlings that you just completed, decide whether to accept or 
     
 ![](tree_traits.png){height="3in" fig-align="center"}
 
-7. Are the following trees equivalent? If not, circle the one(s) that are different. **(2 pt)**
+7. Are the following trees equivalent? If not, circle the one that is different from the rest. **(2 pt)**
 
 <!-- No, first is different -->
 
@@ -266,7 +266,7 @@ df %>%
 a. Name the independent and dependent variables in the study, and mention for each whether it is an abiotic or a biotic factor. **(4 pt)** \vspace{2cm}  
 a. What does the amount of chlorophyll serve as a proxy for in this study? In other words, what does this value tell you about the lake water? **(2 pt)** \vspace{2cm}  
 a. What kind of organism(s) are being monitored in this study? Circle one: autotrophs | heterotrophs **(1 pt)**  
-a. Name the role of these organism(s) in the food web of the lake. ________________ **(1 pt)**  
+a. Name the role of these organism(s) in the food web of the lake (hint: trophic level). ________________ **(1 pt)**  
 a. Is the following statement an alternative hypothesis or a prediction? ________________ **(1 pt)** \linebreak "The temperature of the lake water will have an effect on its chlorophyll concentration, and this will be tested using R^2^ value."  
 a. Do you accept or reject the alternative hypothesis? Explain your reasoning. **(2 pt)** \linebreak \linebreak \linebreak  
 a. Is temperature a limiting factor in this lake system? ______ **(1 pt)**  
@@ -324,8 +324,8 @@ a. List 3 traits of Protista, based on the tree. **(3 pt)** \linebreak \linebrea
     a. Domain: ________________ <!-- Eukarya -->  
     a. Kingdom: ________________ <!-- Animalia -->  
     a. Phylum/Group: ________________ <!-- Cnidaria -->  
-    a. Slide preparation: Live | Fixed | Fixed + stained <!-- Fixed -->  
-    a. Symmetry: Asymmetric | Radial | Bilateral <!-- Asymmetric -->  
+    a. Slide preparation: Live | Fixed | Fixed + stained <!-- Fixed + stained -->  
+    a. Symmetry: Asymmetric | Radial | Bilateral <!-- Radial -->  
     a. Trophic level: Producer | Consumer | Decomposer <!-- Consumer -->  
 
 ## Station 4
@@ -372,6 +372,6 @@ a. List 3 traits of Protista, based on the tree. **(3 pt)** \linebreak \linebrea
 
 ## Station 8
 
-8. Five different species are shown in the given cards, along with a list their traits. Use this information to draw a phylogenetic tree for these species. Remember to label the branches using the traits, and the tips using the species names. **(10 pt)**
+8. Five different species are shown in the given cards, along with a list of their traits. Use this information to draw a phylogenetic tree for these species. Remember to label the branches and tips appropriately. **(10 pt)**
 
 \vspace{2in}
