@@ -1,0 +1,54 @@
+---
+title: "2026 Spring BIOL 1209"
+subtitle: "Section 10, Quiz 01" ###
+csl: ../apa.csl
+format:  
+  pdf:
+    fontsize: "10pt"
+    # mainfont: "Vollkorn"
+    sansfont: "Petrona"
+    linestretch: 1.2
+    margin-top: 0.1in
+    margin-bottom: 0.8in
+    margin-left: 0.5in
+    margin-right: 0.5in
+    include-in-header:
+      - file: "../include-in-header.tex" # left-justify instead of full-justify
+editor_options: 
+  chunk_output_type: console
+---
+
+\vspace{-2cm}
+
+**Name:** _______________________ \hspace{2cm} \hspace{3cm} \hspace{1.5cm} **Date:** _______  
+**Time:** 10 min \hspace{12cm} **Max. points:** 10  
+
+\vspace{1cm}
+
+1. The table below shows some parameters and results of AMP modelling. Fill in the blank cells for 1a--1c. **(4 pt)**
+
+```{r}
+#| echo: false
+ 
+library(tibble)
+options(knitr.kable.NA = "")
+
+tribble(
+  ~ "", ~ "Fitness of AA", ~ "Fitness of Aa", ~ "Fitness of aa", 
+  ~ "p(A) at gen. 200", ~ "p(a) at gen. 200",
+  
+  "1a", 0.6, NA, 0.4, 0.9, NA,
+  "1b", 0.8, 0.8, 0.2, 1, NA,
+  "1c", 0.8, 0.8, 0.2, NA, 0.5
+) |>
+  knitr::kable(align = "c")
+```
+
+2. What **in-text citation** (in APA format) would you use for this reference? **(3 pt)** \linebreak  
+J. V. Remsen, T. A. Parker, Arboreal Dead-Leaf-Searching Birds of the Neotropics, *The Condor: Ornithological Applications*, Volume 86, Issue 1, 1 February 1984, Pages 36--41, https://doi.org/10.2307/1367341  \linebreak \linebreak
+
+3. Circle 1 indication that the below reference is a primary source. **(1 pt)**
+
+![](remsenparker1984.png){height="4in" fig-align="center"}
+
+4. What are two benchtop sterile practices you follow during replica plating? **(2 pt)** \linebreak  \linebreak  \linebreak  \linebreak

@@ -1,0 +1,44 @@
+---
+title: "2026 Spring BIOL 1209"
+subtitle: "Section 10, Quiz 02" ###
+csl: ../apa.csl
+format:  
+  pdf:
+    fontsize: "10pt"
+    # mainfont: "Vollkorn"
+    sansfont: "Petrona"
+    linestretch: 1.2
+    margin-top: 0.1in
+    margin-bottom: 0.8in
+    margin-left: 0.5in
+    margin-right: 0.5in
+    include-in-header:
+      - file: "../include-in-header.tex" # left-justify instead of full-justify
+editor_options: 
+  chunk_output_type: console
+---
+
+\vspace{-2cm}
+
+**Name:** _______________________ \hspace{2cm} \hspace{3cm} \hspace{1.5cm} **Date:** _______  
+**Time:** 10 min \hspace{12cm} **Max. points:** 10  
+
+\vspace{1cm}
+
+1. In your last lab you used an AMP like PopGen to obtain a graph of **fitness vs p(A)** for a population. **(2 pt)**  
+    a. What was the dependent variable for this experiment? ____________    
+    b. What was the independent variable for this experiment? ____________  
+
+2. In the replica plating experiment, you used three fresh plates, namely Control, High-Tet and Low-Tet. What is the correct order in which to perform the replica plating with these three plates, so as to prevent bias? **(2 pt)** \linebreak \linebreak  
+
+3. In a given population, list the values of $p(A)$ when: **(4 pt)**  
+    a. Allele $A$ has been **lost** ________  
+    a. Allele $A$ has been **fixed** ________
+    a. Allele $a$ has been **lost** ________  
+    a. Allele $a$ has been **fixed** ________
+
+4. The ability to taste phenylthiocarbamide (PTC) in humans is determined by a gene with two alleles $T$ and $t$. Human beings carrying the dominant allele $T$ can taste PTC. In a population where $p(T) = 0.4$, what is the frequency/fraction of successful tasters, assuming it follows Hardy-Weinberg equilibrium? Show your work. **(2 pt)**
+
+<!-- ```{r} -->
+<!-- 0.4^2 + 2*0.4*0.6 -->
+<!-- ``` -->
