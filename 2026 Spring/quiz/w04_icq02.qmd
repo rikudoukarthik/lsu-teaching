@@ -20,7 +20,7 @@ editor_options:
 
 \vspace{-2cm}
 
-**Name:** _______________________ \hspace{2cm} \hspace{3cm} \hspace{1.5cm} **Date:** _______  
+**Name:** _______________________ \hspace{2cm} **Bench:** ______ \hspace{1.5cm} **Date:** _______  
 **Time:** 10 min \hspace{12cm} **Max. points:** 10  
 
 \vspace{1cm}
